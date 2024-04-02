@@ -15,3 +15,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.banner{
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  overflow:hidden;
+  position: relative;
+}
+
+.banner .waves{
+  position: absolute;
+  width: 100%;
+  bottom:0;
+  left:0;
+  
+}
