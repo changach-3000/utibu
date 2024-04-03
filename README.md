@@ -28,6 +28,9 @@ The development process for the Utibu Health Mobile App involves the following s
 6. **Deployment**: Deploy the app to production servers using Heroku for the backend and Netlify/Vercel for the frontend, making the app accessible to customers.
 7. **Maintenance and Updates**: Monitor the app for any issues, apply necessary updates, and implement new features based on user feedback and business requirements.
 
+## Backend Screenshots
+![Backend Development Demo](./utibu-frontend/public/screenshot.png)
+
 ## Getting Started
 
 To get started with the development of the Utibu Health Mobile App, follow these steps:
