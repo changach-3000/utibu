@@ -1,24 +1,25 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { MedicationContext } from "../context/MedicationContext";
 
+function AddMedication() {
+   
+  const {AddMedication} = useContext(MedicationContext)
 
-function SignUp() {
-
-  const {signup} = useContext(AuthContext)
-
-  const [fullName, setFullName] = useState()
-  const [password, setPassword] = useState()
-  const [phoneNumber, setPhoneNumber] = useState()
-  const [address, setAddress] = useState()
+  const [medicationName, setMedicationName] = useState()
+  const [medicationDesc, setMedicationDesc] = useState()
+  const [medicationImage, setMedicationImage] = useState()
+  const [quantity, setQuantity] = useState()
+  const [price, setPrice] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signup(fullName,password,phoneNumber,address)
-    setAddress("")
-    setPhoneNumber("")
-    setPassword("")
-    setFullName("")
+    AddMedication( medicationName, medicationImage, medicationDesc, quantity, price)
+    setPrice("")
+    setQuantity("")
+    setMedicationImage("")
+    setMedicationDesc("")
+    setMedicationName("")
  }
 
   return (
@@ -47,17 +48,16 @@ function SignUp() {
           <div className="h-full flex flex-col items-center justify-center xl:flex-row">
             <div className="w-full max-w-xl xl:pr-16 xl:w-7/12">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
-                Join Utibu Health Today!
+                Hey There!
               </h2>
               <p className="max-w-xl mb-4 text-base md:text-lg">
-                Create an account today to access a world of exclusive benefits and
-                experiences waiting just for you!
+               Add Medication
               </p>
             </div>
             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
               <div className="bg-white rounded shadow-2xl p-7 sm:p-10 h-full">
                 <h3 className="mb-4 text-xl font-semibold sm:text-center sm:mb-6 sm:text-2xl">
-                  Create an Account
+                  Add Medicine
                 </h3>
                 <form className="h-full flex flex-col" onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -65,16 +65,16 @@ function SignUp() {
                       htmlFor="userName"
                       className="inline-block mb-1 font-medium"
                     >
-                      User Name
+                      Medication Name
                     </label>
                     <input
-                      placeholder="Jane"
+                      placeholder=""
                       required
                       type="text"
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       id="userName"
                       name="userName"
-                      onChange={(e)=> setFullName(e.target.value)} 
+                      onChange={(e)=> setMedicationName(e.target.value)} 
                     />
                   </div>
                 
@@ -84,16 +84,16 @@ function SignUp() {
                       htmlFor="password"
                       className="inline-block mb-1 font-medium"
                     >
-                      Password
+                      Medication Description
                     </label>
                     <input
-                      placeholder="password"
+                      placeholder=""
                       required
-                      type="password"
+                      type="text"
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       id="pwd"
                       name="password"
-                      onChange={(e)=> setPassword(e.target.value)} 
+                      onChange={(e)=> setMedicationDesc(e.target.value)} 
                     />
                   </div>
                   <div className="mb-4">
@@ -101,16 +101,16 @@ function SignUp() {
                       htmlFor="userName"
                       className="inline-block mb-1 font-medium"
                     >
-                      Phone Number
+                      Medication Image
                     </label>
                     <input
-                      placeholder="Jane"
+                      placeholder=""
                       required
                       type="text"
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       id="userName"
                       name="userName"
-                      onChange={(e)=> setPhoneNumber(e.target.value)} 
+                      onChange={(e)=> setMedicationImage(e.target.value)} 
                     />
                   </div>
                   <div className="mb-4">
@@ -118,16 +118,33 @@ function SignUp() {
                       htmlFor="userName"
                       className="inline-block mb-1 font-medium"
                     >
-                      Address
+                      Quantity
                     </label>
                     <input
-                      placeholder="Jane"
+                      placeholder=""
                       required
                       type="text"
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       id="userName"
                       name="userName"
-                      onChange={(e)=> setAddress(e.target.value)} 
+                      onChange={(e)=> setQuantity(e.target.value)} 
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <label
+                      htmlFor="userName"
+                      className="inline-block mb-1 font-medium"
+                    >
+                      Price
+                    </label>
+                    <input
+                      placeholder=""
+                      required
+                      type="text"
+                      className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
+                      id="userName"
+                      name="userName"
+                      onChange={(e)=> setPrice(e.target.value)} 
                     />
                   </div>
                   <div className="mt-4 mb-2 sm:mb-4">
@@ -138,12 +155,6 @@ function SignUp() {
                       Register
                     </button>
                   </div>
-                  <p className="text-xs text-gray-600 sm:text-sm">
-                    Don't have an account yet?{" "}
-                    <Link to="/login">
-                      <span className="text-sky-600">Login.</span>
-                    </Link>
-                  </p>
                 </form>
               </div>
             </div>
@@ -154,4 +165,4 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default AddMedication;

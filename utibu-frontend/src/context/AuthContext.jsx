@@ -4,16 +4,15 @@ import  Swal from "sweetalert2"
 export const AuthContext = createContext()
 
 export function AuthProvider({children}){
-
   const nav = useNavigate()
   const [onChange, setonChange] = useState(false)
   const [currentuser, setCurrentUser]= useState()
 
-  const login = (username, password) =>{
-    fetch("/api/auth/login", {
+  const login = (fullName,password) =>{
+    fetch("/api/login", {
         method: "POST",
         headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({username, password})
+        body: JSON.stringify({fullName,password})
     })
     .then((res)=>res.json())
     .then((response)=>{
@@ -28,7 +27,7 @@ export function AuthProvider({children}){
         }
         else if(response.success)
         { 
-            nav("/resources")
+            nav("/")
             Swal.fire(
                 'Success',
                 response.success,
@@ -48,11 +47,11 @@ export function AuthProvider({children}){
 }
 
 // signup 
-const signup = (username, password) =>{
-  fetch("/api/users", {
+const signup = (fullName,password,phoneNumber,address) =>{
+  fetch("/api/customer", {
       method: "POST",
       headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({username, password})
+      body: JSON.stringify({fullName,password,phoneNumber,address})
   })
   .then((res)=>res.json())
   .then((response)=>{
@@ -88,14 +87,14 @@ const signup = (username, password) =>{
 
  // Logout
  const logout = () =>{
-  fetch("/api/auth/logout", {
+  fetch("/api/logout", {
    method: "DELETE",
           })
   .then((res)=>res.json())
   .then((response)=>{
    setCurrentUser()
    setonChange(!onChange)
-   nav("/about")
+   nav("/")
   })
 }
 

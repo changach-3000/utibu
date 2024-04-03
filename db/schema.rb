@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_30_105241) do
 
   create_table "medications", force: :cascade do |t|
     t.string "medicationName"
+    t.string "medicationImage"
     t.string "medicationDesc"
     t.integer "quantity"
     t.integer "price"

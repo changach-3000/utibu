@@ -5,14 +5,14 @@ import { AuthContext } from "../context/AuthContext";
 function Login() {
   const {login} = useContext(AuthContext)
 
-  const [username, setUsername] = useState()
+  const [fullName, setFullName] = useState()
   const [password, setPassword] = useState()
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      login(username,password)
+      login(fullName,password)
       setPassword("")
-      setUsername("")
+      setFullName("")
    }
 
 
@@ -24,13 +24,13 @@ function Login() {
         loop
         className="absolute inset-0 object-cover w-screen h-full"
       >
-        <source src="login.mp4" type="video/mp4" />
+        <source src="order.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      <div className="relative bg-opacity-75 bg-pink-200 h-screen">
+      <div className="relative bg-opacity-75 bg-sky-200 h-screen">
         <svg
-          className="absolute inset-x-0 bottom-0 bg-opacity-75 text-pink-100"
+          className="absolute inset-x-0 bottom-0 bg-opacity-75 text-sky-600"
           viewBox="0 0 1160 163"
         >
           <path
@@ -41,10 +41,10 @@ function Login() {
         <div className="relative h-screen px-4 py-16 mx-auto overflow-hidden sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-0">
           <div className="h-full flex flex-col items-center justify-center xl:flex-row">
             <div className="w-full max-w-xl xl:pr-16 xl:w-7/12">
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-pink-900 sm:text-4xl sm:leading-none">
-                Welcome Back to EmpowerHer
+              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none">
+                Welcome Back to Utibu Health
               </h2>
-              <p className="max-w-xl mb-4 text-base text-pink-900 md:text-lg">
+              <p className="max-w-xl mb-4 text-base md:text-lg">
                 Log in today to access a world of exclusive benefits and
                 experiences waiting just for you!
               </p>
@@ -60,7 +60,7 @@ function Login() {
                       htmlFor="userName"
                       className="inline-block mb-1 font-medium"
                     >
-                      User Name
+                      Full Name
                     </label>
                     <input
                       placeholder="Jane"
@@ -69,7 +69,7 @@ function Login() {
                       className="flex-grow w-full h-12 px-4 mb-2 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                       id="userName"
                       name="userName"
-                      onChange={(e)=> setUsername(e.target.value)} 
+                      onChange={(e)=> setFullName(e.target.value)} 
                     />
                   </div>
 
@@ -93,7 +93,7 @@ function Login() {
                   <div className="mt-4 mb-2 sm:mb-4">
                     <button
                       type="submit"
-                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-pink-900 hover:bg-pink-600 focus:shadow-outline focus:outline-none"
+                      className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-sky-600 hover:bg-sky-400 focus:shadow-outline focus:outline-none"
                     >
                       Login
                     </button>
@@ -101,7 +101,7 @@ function Login() {
                   <p className="text-xs text-gray-600 sm:text-sm">
                     Don't have an account yet?{" "}
                     <Link to="/signup">
-                      <span className="text-pink-900">Register Here.</span>
+                      <span className="text-sky-600">Register Here.</span>
                     </Link>
                   </p>
                 </form>
